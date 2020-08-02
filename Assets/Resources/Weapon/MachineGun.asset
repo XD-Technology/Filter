@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MachineGun
   m_EditorClassIdentifier: Assembly-CSharp:LastPlayer.Filter.Plane:Gun
   Prefab: {fileID: 7181569605816297374, guid: a029929ce5f514c40831cbe5b1b46494, type: 3}
-  RateOfFire: 10
+  RateOfFire: 0.001
   Damage: 1
-  Velocity: 1000
+  Velocity: 5000

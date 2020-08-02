@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 7181569605816297374, guid: 7d507155c751a74429c0d209829c371b, type: 3}
   RateOfFire: 1
   Damage: 10
-  Velocity: 50
+  Velocity: 800
