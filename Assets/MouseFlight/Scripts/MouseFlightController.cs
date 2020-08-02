@@ -13,9 +13,6 @@ namespace MFlight
     /// </summary>
     public class MouseFlightController : MonoBehaviour
     {
-        public Joystick joystick;
-
-
         [Header("Components")]
         [SerializeField] [Tooltip("Transform of the aircraft the rig follows and references")]
         private Transform aircraft = null;
@@ -131,10 +128,8 @@ namespace MFlight
             }
 
             // Mouse input.
-            //float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-            float mouseX = joystick.Horizontal * mouseSensitivity;
-            //float mouseY = -Input.GetAxis("Mouse Y") * mouseSensitivity;
-            float mouseY = joystick.Vertical * mouseSensitivity;
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            float mouseY = -Input.GetAxis("Mouse Y") * mouseSensitivity;
 
             // Rotate the aim target that the plane is meant to fly towards.
             // Use the camera's axes in world space so that mouse motion is intuitive.

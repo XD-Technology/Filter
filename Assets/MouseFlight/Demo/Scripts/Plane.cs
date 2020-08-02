@@ -17,7 +17,6 @@ namespace MFlight.Demo
     [RequireComponent(typeof(Rigidbody))]
     public class Plane : MonoBehaviour
     {
-
         [Header("Components")]
         [SerializeField] private MouseFlightController controller = null;
 
