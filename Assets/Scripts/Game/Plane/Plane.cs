@@ -18,6 +18,7 @@ namespace MFlight.Demo
     public class Plane : MonoBehaviour
     {
         [Header("Components")]
+        public Joystick joystick;
         [SerializeField] private MouseFlightController controller = null;
 
         [Header("Physics")]
@@ -58,13 +59,13 @@ namespace MFlight.Demo
             rollOverride = false;
             pitchOverride = false;
 
-            float keyboardRoll = Input.GetAxis("Horizontal");
+            float keyboardRoll = joystick.Horizontal;
             if (Mathf.Abs(keyboardRoll) > .25f)
             {
                 rollOverride = true;
             }
 
-            float keyboardPitch = Input.GetAxis("Vertical");
+            float keyboardPitch = joystick.Vertical;
             if (Mathf.Abs(keyboardPitch) > .25f)
             {
                 pitchOverride = true;

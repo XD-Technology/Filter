@@ -1,8 +1,4 @@
-﻿//
-// Copyright (c) Brian Hernandez. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for details.
-//
-
+﻿using LastPlayer.Game;
 using UnityEngine;
 
 namespace MFlight
@@ -14,6 +10,7 @@ namespace MFlight
     public class MouseFlightController : MonoBehaviour
     {
         [Header("Components")]
+        public FixedTouchField TouchPanel;
         [SerializeField] [Tooltip("Transform of the aircraft the rig follows and references")]
         private Transform aircraft = null;
         [SerializeField] [Tooltip("Transform of the object the mouse rotates to generate MouseAim position")]
@@ -24,8 +21,6 @@ namespace MFlight
         private Transform cam = null;
 
         [Header("Options")]
-        [SerializeField] [Tooltip("Follow aircraft using fixed update loop")]
-        private bool useFixed = true;
 
         [SerializeField] [Tooltip("How quickly the camera tracks the mouse aim point.")]
         private float camSmoothSpeed = 5f;
@@ -98,16 +93,12 @@ namespace MFlight
 
         private void Update()
         {
-            if (useFixed == false)
-                UpdateCameraPos();
-
             RotateRig();
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            if (useFixed == true)
-                UpdateCameraPos();
+            UpdateCameraPos();
         }
 
         private void RotateRig()
@@ -128,8 +119,8 @@ namespace MFlight
             }
 
             // Mouse input.
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-            float mouseY = -Input.GetAxis("Mouse Y") * mouseSensitivity;
+            float mouseX = TouchPanel.TouchDist.x * mouseSensitivity;
+            float mouseY = TouchPanel.TouchDist.y * mouseSensitivity;
 
             // Rotate the aim target that the plane is meant to fly towards.
             // Use the camera's axes in world space so that mouse motion is intuitive.
