@@ -7,7 +7,7 @@ namespace LastPlayer.Filter.Plane
     {
         protected override void Initialize(GameObject obj)
         {
-
+            
         }
     }
 }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1759a4baaf2ff7d4bb7619dd3c7422be, type: 3}
   m_Name: Missile
-  m_EditorClassIdentifier: Assembly-CSharp:LastPlayer.Filter.Plane:Missile
+  m_EditorClassIdentifier: 
   Prefab: {fileID: 7181569605816297374, guid: 7d507155c751a74429c0d209829c371b, type: 3}
-  RateOfFire: 1
-  Damage: 10
-  Velocity: 800
+  RateOfFire: 0
+  Damage: 0
+  Velocity: 0

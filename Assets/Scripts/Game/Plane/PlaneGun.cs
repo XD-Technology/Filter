@@ -6,10 +6,8 @@ namespace LastPlayer.Filter.Plane
 {
     public class PlaneGun : MonoBehaviour
     {
-        [Header("Reference")]
-        public Transform machineGun;
-        public Transform missileL;
-        public Transform missileR;
+        [Header("Values")]
+        public int range;
 
         private Transform nextMissile;
         private float gunTimer = 0;
@@ -18,13 +16,19 @@ namespace LastPlayer.Filter.Plane
         private bool shootMissile = true;
 
         [Header("Reference")]
+        public Transform camTransform;
+        public Transform machineGun;
+        public Transform missileL;
+        public Transform missileR;
         public Weapon gun;
         public Weapon missile;
+        public Transform tempBuilding;
 
         private void Awake()
         {
+            //camTransform = Camera.main.transform;
             nextMissile = missileL;
-            gameObject.layer = 9;
+            //gameObject.layer = 9;
         }
 
         private void Update()
@@ -37,6 +41,7 @@ namespace LastPlayer.Filter.Plane
                 shootGun = false;
                 gunTimer = 0;
                 gun.CreateInstance(transform, transform, machineGun);
+                ShootMachineGun();
             }
             else if (shootMissile && Input.GetKey(KeyCode.N))
             {
@@ -44,7 +49,8 @@ namespace LastPlayer.Filter.Plane
                 missileTimer = 0;
                 if (nextMissile == missileL) nextMissile = missileR;
                 else if (nextMissile == missileR) nextMissile = missileL;
-                missile.CreateInstance(transform, transform, nextMissile);
+                GameObject missileObj = missile.CreateInstance(transform, transform, nextMissile);
+                missileObj.GetComponent<HomingMissile>().Init(tempBuilding);
             }
         }
 
@@ -52,6 +58,15 @@ namespace LastPlayer.Filter.Plane
         {
             gunTimer += Time.fixedDeltaTime;
             missileTimer += Time.fixedDeltaTime;
+        }
+
+        private void ShootMachineGun()
+        {
+            Debug.Log("Enemy Hit");
+            if (Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit hit))
+            {
+                Debug.Log(hit.transform.name);
+            }
         }
     }
 }

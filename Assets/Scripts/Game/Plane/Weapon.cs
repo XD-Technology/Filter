@@ -7,6 +7,7 @@ namespace LastPlayer.Filter.Plane
     {
         [Header("Reference")]
         public GameObject Prefab;
+
         [Header("Setting")]
         public float RateOfFire;
         public float Damage;

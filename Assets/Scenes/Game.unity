@@ -907,7 +907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077423116}
   m_Layer: 9
-  m_Name: GameObject
+  m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1180,6 +1180,11 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 393260196}
+    - target: {fileID: 114329657595640044, guid: 76845026de374da4aa455cd164e63143,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76845026de374da4aa455cd164e63143, type: 3}
 --- !u!1 &1300900341 stripped
@@ -1200,11 +1205,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272291b267a96cb46886369bc9dc63a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 1000
+  camTransform: {fileID: 1077423116}
   machineGun: {fileID: 1077423116}
   missileL: {fileID: 806364069}
   missileR: {fileID: 882224828}
-  gun: {fileID: 11400000, guid: bcd27bdb0df0f504cb7585b747e0ef76, type: 2}
+  gun: {fileID: 11400000, guid: 911e997171b70d648b75b80d90d86006, type: 2}
   missile: {fileID: 11400000, guid: db17b131597f91f4686d6138fd033e4e, type: 2}
+  tempBuilding: {fileID: 748557973}
 --- !u!1 &1433533390
 GameObject:
   m_ObjectHideFlags: 0
