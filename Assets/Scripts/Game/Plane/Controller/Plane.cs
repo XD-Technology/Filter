@@ -17,8 +17,8 @@ namespace MFlight.Demo
     [RequireComponent(typeof(Rigidbody))]
     public class Plane : MonoBehaviour
     {
-
         [Header("Components")]
+        public Joystick joystick;
         [SerializeField] private MouseFlightController controller = null;
 
         [Header("Physics")]
@@ -59,13 +59,13 @@ namespace MFlight.Demo
             rollOverride = false;
             pitchOverride = false;
 
-            float keyboardRoll = Input.GetAxis("Horizontal");
+            float keyboardRoll = joystick.Horizontal;
             if (Mathf.Abs(keyboardRoll) > .25f)
             {
                 rollOverride = true;
             }
 
-            float keyboardPitch = Input.GetAxis("Vertical");
+            float keyboardPitch = joystick.Vertical;
             if (Mathf.Abs(keyboardPitch) > .25f)
             {
                 pitchOverride = true;
@@ -135,10 +135,7 @@ namespace MFlight.Demo
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.
             rigid.AddRelativeForce(Vector3.forward * thrust * forceMult, ForceMode.Force);
-            rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch,
-                                                turnTorque.y * yaw,
-                                                -turnTorque.z * roll) * forceMult,
-                                    ForceMode.Force);
+            rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch, turnTorque.y * yaw, -turnTorque.z * roll) * forceMult, ForceMode.Force);
         }
     }
 }
